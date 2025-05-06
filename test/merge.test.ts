@@ -14,4 +14,11 @@ describe("merge", () => {
     const c3: number[] = [6, 7, 8, 9, 10, 11, 14];
     expect(merge(c1, c2, c3)).toEqual([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 20]);
   });
+
+  it("handles arrays with only zeros", () => {
+    const c1: number[] = [0, 0];
+    const c2: number[] = [0, 0];
+    const c3: number[] = [0, 0];
+    expect(merge(c1, c2, c3)).toEqual([0, 0, 0, 0, 0, 0]);
+  });
 });
