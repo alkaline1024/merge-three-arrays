@@ -21,4 +21,12 @@ describe("merge", () => {
     const c3: number[] = [0, 0];
     expect(merge(c1, c2, c3)).toEqual([0, 0, 0, 0, 0, 0]);
   });
+
+  it("handles large arrays (100k member)", () => {
+    const c1: number[] = Array.from({ length: 50000 }, (_, i) => i * 2);
+    const c2: number[] = Array.from({ length: 50000 }, (_, i) => 99999 - i * 2);
+    const c3: number[] = [];
+    const expected = Array.from({ length: 100000 }, (_, i) => i);
+    expect(merge(c1, c2, c3)).toEqual(expected);
+  });
 });
