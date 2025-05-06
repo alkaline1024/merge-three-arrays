@@ -21,6 +21,13 @@ describe("merge", () => {
     const c3: number[] = [0, 0];
     expect(merge(c1, c2, c3)).toEqual([0, 0, 0, 0, 0, 0]);
   });
+ 
+  it("handles arrays with mixed numbers", () => {
+    const c1: number[] = [-10, -10, 0, 0, 0, 0, 0, 0, 10, 10];
+    const c2: number[] = [0, -1, -2, -3, -4, -5, -6, -7, -8, -9, -10];
+    const c3: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    expect(merge(c1, c2, c3)).toEqual([-10, -10, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10]);
+  });
 
   it("handles large arrays (100k member)", () => {
     const c1: number[] = Array.from({ length: 50000 }, (_, i) => i * 2);
